@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Model Input</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="number"],
+        input[type="text"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .prediction {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>START UP PREDICTOR MODEL</h1>
+    <form action="/predict" method="post">
+        <label for="marketing">Marketing Spending:</label>
+        <input type="text" id="marketing" name="marketing"><br>
+        
+        <label for="administration">Administration Spending:</label>
+        <input type="text" id="administration" name="administration"><br>
+        
+        <label for="rd_spending">R&D Spending:</label>
+        <input type="text" id="rd_spending" name="rd_spending"><br>
+        
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city"><br>
+        
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction %}
+        <div class="prediction">
+            <h2>Prediction Result:</h2>
+            <p>The predicted value is: {{ prediction }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
